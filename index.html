@@ -38,8 +38,13 @@
       border-radius: 6px;
       font-size: 1rem;
     }
-    input[type="file"] {
-      padding: 5px;
+    .info-box {
+      margin-top: 15px;
+      padding: 12px;
+      background-color: #eef3f8;
+      border-left: 4px solid #005aa7;
+      color: #003f7d;
+      font-size: 0.95rem;
     }
     .checkbox-label {
       font-weight: normal;
@@ -74,7 +79,7 @@
 </head>
 <body>
 
-  <form action="https://formspree.io/f/xovwlvkv" method="POST" enctype="multipart/form-data">
+  <form action="https://formspree.io/f/xovwlvkv" method="POST">
     <h2>Reklamationsformular</h2>
 
     <label for="name">Firma / Vorname, Name</label>
@@ -95,8 +100,10 @@
     <label for="issue">Grund der Reklamation</label>
     <textarea id="issue" name="Reklamationsgrund" rows="5" required></textarea>
 
-    <label for="file">Datei oder Foto hochladen (max. 10 MB)</label>
-    <input type="file" id="file" name="Datei" accept=".jpg,.jpeg,.png,.pdf" required />
+    <div class="info-box">
+      📎 Bitte senden Sie Fotos der beschädigten Ware separat per E-Mail an  
+      <strong>info@anavon-ski.com</strong>.
+    </div>
 
     <div class="checkbox-label">
       <input type="checkbox" id="einwilligung" name="Einwilligung" required />
