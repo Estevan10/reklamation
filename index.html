@@ -74,11 +74,7 @@
 </head>
 <body>
 
-  <form action="https://formsubmit.io/send/info@anavon-ski.com" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-    <input type="text" name="_honey" style="display:none">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_redirect" value="https://estevan10.github.io/reklamation/danke.html">
-
+  <form action="https://formspree.io/f/xovwlvkv" method="POST" enctype="multipart/form-data">
     <h2>Reklamationsformular</h2>
 
     <label for="name">Firma / Vorname, Name</label>
@@ -99,7 +95,7 @@
     <label for="issue">Grund der Reklamation</label>
     <textarea id="issue" name="Reklamationsgrund" rows="5" required></textarea>
 
-    <label for="file">Datei oder Foto hochladen (max. 5 MB)</label>
+    <label for="file">Datei oder Foto hochladen (max. 10 MB)</label>
     <input type="file" id="file" name="Datei" accept=".jpg,.jpeg,.png,.pdf" required />
 
     <div class="checkbox-label">
@@ -110,24 +106,6 @@
     <button type="submit">Reklamation absenden</button>
     <p class="small">Sie erhalten eine Bestätigung nach erfolgreicher Übermittlung.</p>
   </form>
-
-  <script>
-    function validateForm() {
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const order = document.getElementById("order").value.trim();
-      const product = document.getElementById("product").value.trim();
-      const issue = document.getElementById("issue").value.trim();
-      const file = document.getElementById("file").files.length;
-      const consent = document.getElementById("einwilligung").checked;
-
-      if (!name || !email || !order || !product || !issue || !file || !consent) {
-        alert("Bitte alle Pflichtfelder ausfüllen und Zustimmung erteilen.");
-        return false;
-      }
-      return true;
-    }
-  </script>
 
 </body>
 </html>
