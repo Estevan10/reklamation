@@ -7,16 +7,18 @@
   <style>
     body {
       font-family: "Helvetica Neue", sans-serif;
-      background-color: #f7f7f7;
+      background: url('Bild5.png') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
       padding: 40px 20px;
     }
     form {
       max-width: 600px;
-      margin: 0 auto;
-      background: white;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.9);
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
     }
     h2 {
       text-align: center;
@@ -39,15 +41,14 @@
     input[type="file"] {
       padding: 5px;
     }
-    input[type="checkbox"] {
-      width: auto;
-      margin-right: 8px;
-    }
     .checkbox-label {
       font-weight: normal;
       display: flex;
       align-items: center;
       margin-top: 15px;
+    }
+    input[type="checkbox"] {
+      margin-right: 8px;
     }
     button {
       margin-top: 25px;
@@ -65,27 +66,30 @@
     }
     .small {
       font-size: 0.9rem;
-      color: #777;
+      color: #555;
+      margin-top: 10px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <form action="https://formsubmit.io/send/info@anavon-ski.com" method="POST" enctype="multipart/form-data">
-    
-    <!-- Hidden Anti-Spam (honeypot) -->
+  <form 
+    action="https://formsubmit.io/send/info@anavon-ski.com" 
+    method="POST" 
+    enctype="multipart/form-data" 
+    onsubmit="return validateForm()"
+  >
+
+    <!-- Honeypot-Spamschutz -->
     <input type="text" name="_honey" style="display:none">
-
-    <!-- Disable CAPTCHA -->
     <input type="hidden" name="_captcha" value="false">
-
-    <!-- Optional: Redirect to thank you page -->
     <input type="hidden" name="_redirect" value="https://anavon-ski.com/danke">
 
     <h2>Reklamationsformular</h2>
 
-    <label for="name">Vorname / Nachname</label>
-    <input type="text" id="name" name="Vorname / Nachname" required />
+    <label for="name">Firma / Vorname, Name</label>
+    <input type="text" id="name" name="Name" required />
 
     <label for="email">E-Mail-Adresse</label>
     <input type="email" id="email" name="E-Mail" required />
@@ -93,26 +97,44 @@
     <label for="phone">Telefonnummer (optional)</label>
     <input type="tel" id="phone" name="Telefon" />
 
-    <label for="order">Bestellnummer / Kaufdatum</label>
-    <input type="text" id="order" name="Bestellung" required />
+    <label for="order">Rechnungs- oder Auftragsnummer</label>
+    <input type="text" id="order" name="Auftragsnummer" required />
 
-    <label for="product">Produkt (z. B. Ski-Modell)</label>
+    <label for="product">Produkt</label>
     <input type="text" id="product" name="Produkt" required />
 
     <label for="issue">Grund der Reklamation</label>
     <textarea id="issue" name="Reklamationsgrund" rows="5" required></textarea>
 
-    <label for="file">Datei oder Foto hochladen (max. 5 MB, z. B. JPG, PNG, PDF)</label>
+    <label for="file">Datei oder Foto hochladen (max. 5 MB)</label>
     <input type="file" id="file" name="Datei" accept=".jpg,.jpeg,.png,.pdf" required />
 
     <div class="checkbox-label">
-      <input type="checkbox" name="Einwilligung" required />
+      <input type="checkbox" id="einwilligung" name="Einwilligung" required />
       <label for="einwilligung">Ich stimme der Verarbeitung meiner Daten zum Zweck der Reklamationsbearbeitung zu.</label>
     </div>
 
     <button type="submit">Reklamation absenden</button>
     <p class="small">Sie erhalten eine Bestätigung nach erfolgreicher Übermittlung.</p>
   </form>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const order = document.getElementById("order").value.trim();
+      const product = document.getElementById("product").value.trim();
+      const issue = document.getElementById("issue").value.trim();
+      const file = document.getElementById("file").files.length;
+      const consent = document.getElementById("einwilligung").checked;
+
+      if (!name || !email || !order || !product || !issue || !file || !consent) {
+        alert("Bitte alle Pflichtfelder ausfüllen und Zustimmung erteilen.");
+        return false;
+      }
+      return true;
+    }
+  </script>
 
 </body>
 </html>
