@@ -1,140 +1,68 @@
+
 <!DOCTYPE html>
+
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reklamationsformular | Anavon Ski</title>
-  <style>
-    body {
-      font-family: "Helvetica Neue", sans-serif;
-      background: url('Bild5.png') no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-      padding: 40px 20px;
-    }
-    form {
-      max-width: 600px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.15);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #003f7d;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-    input[type="file"] {
-      padding: 5px;
-    }
-    .checkbox-label {
-      font-weight: normal;
-      display: flex;
-      align-items: center;
-      margin-top: 15px;
-    }
-    input[type="checkbox"] {
-      margin-right: 8px;
-    }
-    button {
-      margin-top: 25px;
-      width: 100%;
-      background-color: #005aa7;
-      color: white;
-      padding: 14px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #003f7d;
-    }
-    .small {
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 10px;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-
-  <form 
-    action="https://formsubmit.io/send/info@anavon-ski.com" 
-    method="POST" 
-    enctype="multipart/form-data" 
-    onsubmit="return validateForm()"
-  >
-
-    <!-- Honeypot-Spamschutz -->
-    <input type="text" name="_honey" style="display:none">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_redirect" value="https://anavon-ski.com/danke">
-
-    <h2>Reklamationsformular</h2>
-
-    <label for="name">Firma / Vorname, Name</label>
-    <input type="text" id="name" name="Name" required />
-
-    <label for="email">E-Mail-Adresse</label>
-    <input type="email" id="email" name="E-Mail" required />
-
-    <label for="phone">Telefonnummer (optional)</label>
-    <input type="tel" id="phone" name="Telefon" />
-
-    <label for="order">Rechnungs- oder Auftragsnummer</label>
-    <input type="text" id="order" name="Auftragsnummer" required />
-
-    <label for="product">Produkt</label>
-    <input type="text" id="product" name="Produkt" required />
-
-    <label for="issue">Grund der Reklamation</label>
-    <textarea id="issue" name="Reklamationsgrund" rows="5" required></textarea>
-
-    <label for="file">Datei oder Foto hochladen (max. 5 MB)</label>
-    <input type="file" id="file" name="Datei" accept=".jpg,.jpeg,.png,.pdf" required />
-
-    <div class="checkbox-label">
-      <input type="checkbox" id="einwilligung" name="Einwilligung" required />
-      <label for="einwilligung">Ich stimme der Verarbeitung meiner Daten zum Zweck der Reklamationsbearbeitung zu.</label>
-    </div>
-
-    <button type="submit">Reklamation absenden</button>
-    <p class="small">Sie erhalten eine Bestätigung nach erfolgreicher Übermittlung.</p>
-  </form>
-
-  <script>
-    function validateForm() {
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const order = document.getElementById("order").value.trim();
-      const product = document.getElementById("product").value.trim();
-      const issue = document.getElementById("issue").value.trim();
-      const file = document.getElementById("file").files.length;
-      const consent = document.getElementById("einwilligung").checked;
-
-      if (!name || !email || !order || !product || !issue || !file || !consent) {
-        alert("Bitte alle Pflichtfelder ausfüllen und Zustimmung erteilen.");
-        return false;
-      }
-      return true;
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANAVON Skitest</title>
+<script>
+    function updateValue(slider, labelId) {
+      const value = slider.value;
+      const label = document.getElementById(labelId);
+      label.textContent = value;
+      label.className = value <= 5 ? 'text-red-600 font-bold' : 'text-green-600 font-bold';
     }
   </script>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black font-sans">
+<header class="h-screen bg-cover bg-center text-white text-center flex items-end justify-center pb-16" style="background-image: url('https://i.ibb.co/v6QQqyW6/Bild5.png');">
+<div class="max-w-4xl mx-auto px-4">
+<h1 class="text-2xl md:text-4xl font-bold mb-2 bg-black/60 inline-block px-4 py-2 rounded">JETZT TESTEN &amp; SKI-EXZELLENZ ERLEBEN!</h1>
+<p class="text-base md:text-lg mb-6 bg-black/40 inline-block px-4 py-2 rounded">Erlebe die kompromisslose Qualität von ANAVON Ski auf der Piste.</p>
+</div>
+</header>
+<form action="https://formsubmit.co/info@anavon-ski.com" class="py-16 bg-white text-black" method="POST">
+<input name="_next" type="hidden" value="https://anavon.ch/danke"/>
+<div class="max-w-5xl mx-auto px-4 mb-12">
+<h2 class="text-3xl font-bold mb-8 text-center">Teilnehmerdaten</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium mb-1">Ort</label>
+<select class="w-full border p-2 rounded" name="Ort" required="">
+<option disabled="" selected="">Bitte wählen...</option>
+<option>Arosa</option><option>Lenzerheide</option><option>Davos</option>
+<option>St. Moritz Corviglia</option><option>St. Moritz Corvatsch</option>
+<option>Diavolezza</option><option>Parpan</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">Name des Testers</label>
+<input class="w-full border p-2 rounded" name="Name" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">Testtag</label>
+<input class="w-full border p-2 rounded" name="Testtag" required="" type="date"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">E-Mail-Adresse</label>
+<input class="w-full border p-2 rounded" name="Email" required="" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1">Getestetes Modell + Länge</label>
+<select class="w-full border p-2 rounded" name="Modell" required="">
+<option disabled="" selected="">Bitte wählen...</option>
+<option>ARX 150</option><option>ARX 156</option><option>ARX 164</option><option>ARX 172</option>
+<option>ARX 150 PRO</option><option>ARX 156 PRO</option><option>ARX 164 PRO</option><option>ARX 172 PRO</option>
+<option>ASR 144</option><option>ASR 156</option><option>ASR 165</option>
+<option>ADP 155/160</option><option>ADP 163/168</option>
+<option>AFR 167</option><option>AFR 176</option>
+</select>
+</div>
+</div>
+</div>
 
+<div class="max-w-5xl mx-auto px-4"><h2 class="text-3xl font-bold mb-8 text-center">Bewertung</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-8"><div class="p-4 border rounded-lg shadow"><h3 class="text-xl font-semibold mb-4">Steuerverhalten</h3><div class="mb-4"><label class="block text-sm font-medium mb-1">Carveverhalten</label><div class="flex items-center gap-4"><input class="w-full accent-[#C8102E]" max="10" min="1" name="Carveverhalten" oninput="updateValue(this, 'label-0')" type="range"></input><span class="text-sm" id="label-0">5</span></div></div><div class="mb-4"><label class="block text-sm font-medium mb-1">Driftverhalten</label><div class="flex items-center gap-4"><input class="w-full accent-[#C8102E]" max="10" min="1" name="Driftverhalten" oninput="updateValue(this, 'label-1')" type="range"></input><span class="text-sm" id="label-1">5</span></div></div></div><div class="p-4 border rounded-lg shadow"><h3 class="text-xl font-semibold mb-4">Schwungverhalten</h3><div class="mb-4"><label class="block text-sm font-medium mb-1">Kurze Schwünge</label><div class="flex items-center gap-4"><input class="w-full accent-[#C8102E]" max="10" min="1" name="Kurze Schwünge" oninput="updateValue(this, 'label-2')" type="range"></input><span class="text-sm" id="label-2">5</span></div></div><div class="mb-4"><label class="block text-sm font-medium mb-1">Mittlere Schwünge</label><div class="flex items-center gap-4"><input class="w-full accent-[#C8102E]" max="10" min="1" name="Mittlere Schwünge" oninput="updateValue(this, 'label-3')" type="range"></input><span class="text-sm" id="label-3">5</span></div></div><div class="mb-4"><label class="block text-sm font-medium mb-1">Lange Schwünge</label><div class="flex items-center gap-4"><input class="w-full accent-[#C8102E]" max="10" min="1" name="Lange Schwünge" oninput="updateValue(this, 'label-4')" type="range"></input><span class="text-sm" id="label-4">5</span></div></div></div><div class="p-4 border rounded-lg shadow"><h3 class="text-xl font-semibold mb-4">Tempoverhalten</h3><div class="mb-4"><label class="block text-sm font-medium mb-1">Laufruhe bei Schussfahrt</label><div class="flex items-center gap-4"><input class="w-full accent-[#C8102E]" max="10" min="1" name="Laufruhe bei Schussfahrt" oninput="updateValue(this, 'label-5')" type="range"></input><span class="text-sm" id="label-5">5</span></div></div></div><div class="p-4 border rounded-lg shadow"><h3 class="text-xl font-semibold mb-4">Design</h3><div class="mb-4"><label class="block text-sm font-medium mb-1">Wie gefällt dir das Design des Skis?</label><div class="flex items-center gap-4"><input class="w-full accent-[#C8102E]" max="10" min="1" name="Wie gefällt dir das Design des Skis?" oninput="updateValue(this, 'label-6')" type="range"></input><span class="text-sm" id="label-6">5</span></div></div></div></div><div class="mt-8 text-center"><textarea class="w-full max-w-3xl h-32 border p-4 text-sm" name="Kommentare" placeholder="Weitere Kommentare..."></textarea></div><div class="text-center mt-12"><button class="bg-[#C8102E] text-white font-semibold px-6 py-3 rounded hover:bg-red-700 transition" type="submit">Formular absenden</button></div></div></form>
 </body>
 </html>
